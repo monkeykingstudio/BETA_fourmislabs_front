@@ -5,7 +5,7 @@ export interface User {
   email: string;
   password: string;
   roles: string;
-  newsletter?: boolean;
+  newsletter: boolean;
   lastLogin?: Date;
   isConnected?: boolean;
 }
