@@ -13,6 +13,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { BoardAdminComponent } from './components/board-admin/board-admin.component';
 import { BoardModeratorComponent } from './components/board-moderator/board-moderator.component';
 import { BoardUserComponent } from './components/board-user/board-user.component';
+import { ActivationComponent } from './vues/activation/activation.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { BoardUserComponent } from './components/board-user/board-user.component
     BoardAdminComponent,
     BoardModeratorComponent,
     BoardUserComponent,
+    ActivationComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,10 @@ import { BoardUserComponent } from './components/board-user/board-user.component
     HttpClientModule
   ],
   providers: [
-        {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+        {
+          provide: HTTP_INTERCEPTORS,
+          useClass: AuthInterceptor,
+          multi: true},
   ],
   bootstrap: [AppComponent]
 })

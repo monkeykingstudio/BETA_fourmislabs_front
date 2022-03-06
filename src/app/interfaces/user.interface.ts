@@ -1,11 +1,12 @@
 export interface User {
   _id?: string;
   creationDate: Date;
-  pseudo: string;
+  username: string;
   email: string;
   password: string;
   roles: string;
   newsletter: boolean;
+  isVerified: boolean;
   lastLogin?: Date;
   isConnected?: boolean;
 }

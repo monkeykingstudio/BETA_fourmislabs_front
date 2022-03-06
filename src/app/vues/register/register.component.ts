@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { MailService } from './../../services/mail.service';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -16,14 +18,17 @@ export class RegisterComponent implements OnInit {
   isSignUpFailed = false;
   errorMessage = '';
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+    private mailService: MailService
+    ) { }
   ngOnInit(): void {
   }
 
-  onSubmit(): void {
+  async onSubmit(): Promise<any> {
     const { username, email, password, newsletter } = this.registerForm;
 
-    this.authService.register(username, email, password, newsletter)
+  this.authService.register(username, email, password, newsletter)
     .subscribe(
       data => {
         this.isSuccessful = true;
