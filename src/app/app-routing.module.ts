@@ -7,8 +7,11 @@ import { ProfileComponent } from './vues/profile/profile.component';
 import { BoardUserComponent } from './components/board-user/board-user.component';
 import { BoardModeratorComponent } from './components/board-moderator/board-moderator.component';
 import { BoardAdminComponent } from './components/board-admin/board-admin.component';
+import { ActivationComponent } from './vues/activation/activation.component';
+
 
 const routes: Routes = [
+  { path: 'mail/activate', component: ActivationComponent },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
