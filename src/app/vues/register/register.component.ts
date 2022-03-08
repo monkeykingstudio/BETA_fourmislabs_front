@@ -1,43 +1,47 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { MailService } from './../../services/mail.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit, OnDestroy {
   registerForm: any = {
     username: null,
     email: null,
     password: null,
     newsletter: true
   };
-  isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
 
-  constructor(
-    private authService: AuthService,
-    private mailService: MailService
-    ) { }
+  constructor(public authService: AuthService) { }
   ngOnInit(): void {
   }
 
-  async onSubmit(): Promise<any> {
+  ngOnDestroy(): void {
+    this.authService.removeIsSuccesfull();
+  }
+
+  onSubmit(): void {
     const { username, email, password, newsletter } = this.registerForm;
 
   this.authService.register(username, email, password, newsletter)
     .subscribe(
       data => {
-        this.isSuccessful = true;
         this.isSignUpFailed = false;
+        this.authService.setIsSuccesfull;
       },
       err => {
         this.errorMessage = err.error.message;
         this.isSignUpFailed = true;
       }
     );
+  }
+
+
+  public signInWithGoogle(): void {
+    this.authService.googleRegister();
   }
 }

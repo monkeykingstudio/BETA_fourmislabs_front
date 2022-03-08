@@ -1,7 +1,7 @@
 <div class="col-md-12">
   <div class="card card-container">
     <form
-      *ngIf="!isSuccessful"
+      *ngIf="!this.authService.isSuccessfull"
       name="registerForm"
       (ngSubmit)="register.form.valid && onSubmit()"
       #register="ngForm"
@@ -81,8 +81,12 @@
         Signup failed!<br />{{ errorMessage }}
       </div>
     </form>
-    <div class="alert alert-success" *ngIf="isSuccessful">
+    <div class="alert alert-success" *ngIf="this.authService.isSuccessfull">
       Your registration is successful!
     </div>
+  </div>
+  <div *ngIf="!this.authService.isSuccessfull" class="card-container">
+    <p>Or you can</p>
+    <button class="btn-google btn-secondary" (click)="signInWithGoogle()">Signup with google</button>
   </div>
 </div>
