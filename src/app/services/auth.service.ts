@@ -23,6 +23,9 @@ export class AuthService {
 
   googleRegister() {
     window.open('http://localhost:3000/google',"mywindow","location=1,status=1,scrollbars=1, width=800,height=800");
+
+    // définir ici un check en base si l'user existe ?
+
     let listener = window.addEventListener('message', (message) => {
     //message will contain google user and details
     if(message.data.user !== undefined) {

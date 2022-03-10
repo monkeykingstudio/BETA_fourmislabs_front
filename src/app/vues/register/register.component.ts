@@ -32,6 +32,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
       data => {
         this.isSignUpFailed = false;
         this.authService.setIsSuccesfull;
+        console.log('user data: ',data);
       },
       err => {
         this.errorMessage = err.error.message;
@@ -41,7 +42,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
 
-  public signInWithGoogle(): void {
+  public signupWithGoogle(): void {
     this.authService.googleRegister();
   }
 }
